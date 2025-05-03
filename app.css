@@ -1,0 +1,19 @@
+.grid-pane {
+  -fx-background-color: white;
+  -fx-grid-lines-visible: true;
+  -fx-border-color: black;
+  -fx-border-width: 1;
+}
+
+.my-buttons {
+  -fx-background-color: #4CAF50;
+  -fx-text-fill: white;
+  -fx-font-size: 12px;
+  -fx-padding: 5px;
+  -fx-border-color: #45a049;
+  -fx-border-width: 1px;
+}
+
+.my-buttons:hover {
+  -fx-background-color: #45a049;
+}
