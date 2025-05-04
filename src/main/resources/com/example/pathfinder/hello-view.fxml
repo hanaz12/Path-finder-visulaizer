@@ -16,22 +16,21 @@
                     <children>
                         <Button fx:id="chooseStartButton" layoutX="29.0" layoutY="256.0" mnemonicParsing="false" onAction="#chooseStartCell" prefHeight="26.0" prefWidth="205.0" style="-fx-background-color: black; -fx-text-fill: white; -fx-font-size: 15; -fx-border-color: #45a049; -fx-border-radius: 6;" text="Choose start cell" />
                         <Label layoutX="14.0" layoutY="32.0" prefHeight="18.0" prefWidth="215.0" style="-fx-font-size: 14; -fx-font-weight: bold;" text="Start Cell : " />
-                        <Label fx:id="startCellLabel" layoutX="86.0" layoutY="33.0" prefHeight="18.0" prefWidth="180.0" />
+                        <Label fx:id="startCellLabel" layoutX="99.0" layoutY="27.0" prefHeight="18.0" prefWidth="180.0" style="-fx-font-size: 20;" />
                         <Label layoutX="13.0" layoutY="61.0" prefHeight="18.0" prefWidth="215.0" style="-fx-font-size: 14; -fx-font-weight: bold;" text="End Cell : " />
-                        <Label fx:id="endCellLabel" layoutX="86.0" layoutY="61.0" prefHeight="18.0" prefWidth="180.0" />
+                        <Label fx:id="endCellLabel" layoutX="86.0" layoutY="56.0" prefHeight="18.0" prefWidth="180.0" style="-fx-font-size: 20;" />
                         <Label layoutX="14.0" layoutY="89.0" prefHeight="34.0" prefWidth="60.0" style="-fx-font-size: 14; -fx-font-weight: bold;" text="Status : " AnchorPane.topAnchor="89.0" />
-                        <Label fx:id="statusLabel" layoutX="74.0" layoutY="97.0" prefHeight="84.0" prefWidth="180.0" />
                         <Label layoutX="14.0" layoutY="129.0" prefHeight="18.0" prefWidth="215.0" style="-fx-font-size: 14; -fx-font-weight: bold;" text="Total Cost : " />
-                        <Label fx:id="totalCostLabel" layoutX="86.0" layoutY="181.0" prefHeight="18.0" prefWidth="180.0" />
-                        <Label layoutX="14.0" layoutY="161.0" prefHeight="18.0" prefWidth="215.0" style="-fx-font-size: 14; -fx-font-weight: bold;" text="Final Result : " />
-                        <Label fx:id="finalResultLabel" layoutX="86.0" layoutY="209.0" prefHeight="18.0" prefWidth="180.0" />
+                        <Label fx:id="statusLabel" layoutX="86.0" layoutY="96.0" prefHeight="18.0" prefWidth="180.0" />
+                        <Label fx:id="totalCostLabel" layoutX="99.0" layoutY="130.0" prefHeight="18.0" prefWidth="180.0" style="-fx-font-size: 20;" />
                         <Button fx:id="chooseTargetButton" layoutX="29.0" layoutY="303.0" mnemonicParsing="false" onAction="#chooseTargetCell" prefHeight="26.0" prefWidth="205.0" style="-fx-background-color: black; -fx-text-fill: white; -fx-font-size: 15; -fx-border-color: #45a049; -fx-border-radius: 6;" text="Choose target cell" />
                         <Button fx:id="chooseBricksButton" layoutX="30.0" layoutY="355.0" mnemonicParsing="false" onAction="#chooseBricks" prefHeight="26.0" prefWidth="205.0" style="-fx-background-color: black; -fx-text-fill: white; -fx-font-size: 15; -fx-border-color: #45a049; -fx-border-radius: 6;" text="Choose bricks locations" />
                         <Button fx:id="runBFSButton" layoutX="30.0" layoutY="401.0" mnemonicParsing="false" onAction="#runBFS" prefHeight="26.0" prefWidth="205.0" style="-fx-background-color: black; -fx-text-fill: white; -fx-font-size: 15; -fx-border-color: #45a049; -fx-border-radius: 6;" text="Run BFS" />
                         <Button fx:id="runDFSButton" layoutX="29.0" layoutY="451.0" mnemonicParsing="false" onAction="#runDFS" prefHeight="26.0" prefWidth="205.0" style="-fx-background-color: black; -fx-text-fill: white; -fx-font-size: 15; -fx-border-color: #45a049; -fx-border-radius: 6;" text="Run DFS" />
                         <Button fx:id="runDijkstraButton" layoutX="30.0" layoutY="502.0" mnemonicParsing="false" onAction="#runDijkstra" prefHeight="26.0" prefWidth="205.0" style="-fx-background-color: black; -fx-text-fill: white; -fx-font-size: 15; -fx-border-color: #45a049; -fx-border-radius: 6;" text="Run Dijekstra" />
-                        <Button fx:id="calcCostButton" layoutX="30.0" layoutY="555.0" mnemonicParsing="false" onAction="#calcCost" prefHeight="26.0" prefWidth="205.0" style="-fx-background-color: black; -fx-text-fill: white; -fx-font-size: 15; -fx-border-color: #45a049; -fx-border-radius: 6;" text="Calc Cost" />
-                        <Button fx:id="resetButton" layoutX="30.0" layoutY="614.0" mnemonicParsing="false" onAction="#reset" prefHeight="26.0" prefWidth="205.0" style="-fx-background-color: black; -fx-text-fill: white; -fx-font-size: 15; -fx-border-color: #45a049; -fx-border-radius: 6;" text="Reset" />
+                        <Button fx:id="resetButton" layoutX="30.0" layoutY="558.0" mnemonicParsing="false" onAction="#reset" prefHeight="26.0" prefWidth="205.0" style="-fx-background-color: black; -fx-text-fill: white; -fx-font-size: 15; -fx-border-color: #45a049; -fx-border-radius: 6;" text="Reset" />
+                  <Label fx:id="startCellLabel1" layoutX="74.0" layoutY="91.0" prefHeight="18.0" prefWidth="180.0" style="-fx-font-size: 20;" />
+                  <Label fx:id="startCellLabel11" layoutX="99.0" layoutY="130.0" prefHeight="18.0" prefWidth="180.0" />
                     </children>
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">

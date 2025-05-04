@@ -1,18 +1,19 @@
 package com.example.pathfinder;
 
 import com.example.pathfinder.Entity.Cell;
+import com.example.pathfinder.Entity.Response;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import com.example.pathfinder.Algorithms.*;
 public class HelloController {
@@ -29,7 +30,6 @@ public class HelloController {
     @FXML private Label endCellLabel;
     @FXML private Label statusLabel;
     @FXML private Label totalCostLabel;
-    @FXML private Label finalResultLabel;
     @FXML private GridPane gridPane;
 
     private Cell startPoint;
@@ -42,6 +42,7 @@ public class HelloController {
     private boolean isChoosingTarget ;
     private boolean isChoosingBrick ;
     private Rectangle[][] cells;
+    private HashMap<Cell,Integer> cost;
 
     public final int numOfGridRows=20;
     public final int numOfGridCols=20;
@@ -65,6 +66,7 @@ public class HelloController {
     }
 
     private void initializeGrid() {
+        cost = new HashMap<>();
         int rows = 20;
         int cols = 20;
         double cellSize = 30;
@@ -72,13 +74,27 @@ public class HelloController {
 
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
+
                 Rectangle cell = new Rectangle(cellSize, cellSize);
-                gridPane.add(cell, col, row);
                 setDefaultCellStyle(cell);
                 cells[row][col] = cell;
+
+                Label costLabel = new Label();
+                costLabel.setStyle("-fx-font-size: 10px; -fx-text-fill: black; -fx-font-weight: bold;");
+                StackPane cellPane = new StackPane();
+                cellPane.getChildren().addAll(cell, costLabel);
+
+                gridPane.add(cellPane, col, row);
+
+                Cell c = new Cell(row, col);
+                int cellCost = (int)(Math.random() * 11);
+                cost.put(c, cellCost);
+
+                costLabel.setText(String.valueOf(cellCost));
+
                 final int finalRow = row;
                 final int finalCol = col;
-                cell.setOnMouseClicked(e -> handleGridClick(finalRow, finalCol));
+                cellPane.setOnMouseClicked(e -> handleGridClick(finalRow, finalCol));
             }
         }
     }
@@ -131,6 +147,11 @@ public class HelloController {
                 setDefaultCellStyle(cells[row][col]);
             }
         }
+        startCellLabel.setText("");
+        endCellLabel.setText("");
+        totalCostLabel.setText("");
+        statusLabel.setText("");
+
     }
     @FXML
     public void chooseStartCell() {
@@ -161,28 +182,46 @@ private void checkForStartandTargetPoints(){
     @FXML
     private void runBFS() {
         checkForStartandTargetPoints();
-       // System.out.println("Bricks: " + bricks);
-        BFS b=new BFS();
-        b.runBFSWithVisualization(cells,startPoint,targetPoint,bricks,numOfGridRows,numOfGridCols);
-
+        new BFS().runBFSWithVisualization(cells, startPoint, targetPoint, new HashSet<>(bricks), 20, 20, cost, response -> {
+            Platform.runLater(() -> {
+               afterAlgo(response.getCost(), response.isHasPath());
+            });
+        });
     }
 
     @FXML
     private void runDFS() {
         checkForStartandTargetPoints();
-       // System.out.println("Bricks: " + bricks);
-        DFS b=new DFS();
-        b.runDFSWithVisualization(cells,startPoint,targetPoint,bricks,numOfGridRows,numOfGridCols);
+        new DFS().runDFSWithVisualization(cells, startPoint, targetPoint, new HashSet<>(bricks), 20, 20, cost, response -> {
+            Platform.runLater(() -> {
+                afterAlgo(response.getCost(), response.isHasPath());
+            });
+        });
     }
 
     @FXML
     private void runDijkstra() {
         checkForStartandTargetPoints();
+        new Dijekstra().runDijekstraWithVisualization(cells, startPoint, targetPoint, new HashSet<>(bricks), 20, 20, cost, response -> {
+            Platform.runLater(() -> {
+                afterAlgo(response.getCost(), response.isHasPath());
+            });
+        });
     }
 
     @FXML
     private void calcCost() {
         checkForStartandTargetPoints();
     }
-
+ public void afterAlgo(int cost, boolean path){
+     startCellLabel.setText(startPoint.toString());
+     endCellLabel.setText(targetPoint.toString());
+     totalCostLabel.setText(cost+"");
+     if (path){
+         statusLabel.setText("Path Found");
+     }
+     else{
+         statusLabel.setText("Path Not Found");
+     }
+ }
 }

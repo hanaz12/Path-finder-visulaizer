@@ -1,8 +1,10 @@
 package com.example.pathfinder.Algorithms;
 
 import com.example.pathfinder.Entity.Cell;
+import javafx.scene.control.Alert;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
@@ -22,4 +24,14 @@ public class CommonLogic {
 
         return neighbors;
     }
+    public int calcCost(List<Cell> path , HashMap<Cell,Integer> cost , Cell start){
+        int pathCost = 0;
+        for (Cell c:path){
+            if (!c.equals(start)&&cost.containsKey(c)){
+                pathCost += cost.get(c);
+            }
+        }
+        return pathCost;
+    }
+
 }

@@ -27,10 +27,10 @@ public class Cell {
 
     @Override
     public String toString() {
-        return "Cell{" +
+        return
                 "x=" + x +
-                ", y=" + y +
-                '}';
+                ", y=" + y
+                ;
     }
 
     @Override
